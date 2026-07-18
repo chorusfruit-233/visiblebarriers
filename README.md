@@ -5,7 +5,7 @@
   <a href="https://modrinth.com/mod/visiblebarriers"><img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg"></a>
   <a href="https://www.curseforge.com/minecraft/mc-mods/visiblebarriers"><img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg"></a>
   <div>Visible Barriers is a useful mod for mapmakers and map playtesters.</div>
-  <div>It adds multiple tools for mapmaking and testing, namely the ability to render barrier blocks as solid blocks using a keybind (default: b).</div>
+  <div>It adds multiple tools for mapmaking and testing, including always-visible barrier blocks rendered as solid blocks.</div>
   <div>It also allows you to see marker entities (when installed on the server).</div>
   <div>It also has several other features, such as a zoom keybind, fullbright, and the ability to set the time of day client side!</div>
 </div>

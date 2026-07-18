@@ -6,8 +6,8 @@ import com.google.gson.JsonObject;
 import net.fabricmc.loader.api.FabricLoader;
 import xyz.amymialee.visiblebarriers.common.VisibleBarriersCommon;
 
-import java.io.FileNotFoundException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 
 public class VisibleConfig {
@@ -97,9 +97,8 @@ public class VisibleConfig {
             var data = gson.fromJson(reader, JsonObject.class);
             if (data.has("visibleBarrier")) {
                 visibleBarrier = data.get("visibleBarrier").getAsBoolean();
-                if (visibleBarrier) {
-                    VisibleBarriers.toggleBarriers();
-                }
+                // Loading must be idempotent; toggling would invert the state on every reload.
+                VisibleBarriers.toggleBarriers = visibleBarrier;
             }
             if (data.has("visibleAir")) {
                 visibleAir = data.get("visibleAir").getAsBoolean();
@@ -116,7 +115,7 @@ public class VisibleConfig {
             if (data.has("solidLights")) {
                 solidLights = data.get("solidLights").getAsBoolean();
             }
-        } catch (FileNotFoundException e) {
+        } catch (NoSuchFileException e) {
             VisibleBarriersCommon.LOGGER.info("Config data not found.");
         } catch (Exception e) {
             VisibleBarriersCommon.LOGGER.info("Error loading config data.");

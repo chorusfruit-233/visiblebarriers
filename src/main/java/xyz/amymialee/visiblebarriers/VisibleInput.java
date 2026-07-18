@@ -9,14 +9,12 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.commands.arguments.TimeArgument;
-import org.lwjgl.glfw.GLFW;
 import xyz.amymialee.visiblebarriers.common.VisibleBarriersCommon;
 
 public class VisibleInput {
 
     private static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(VisibleBarriersCommon.id(VisibleBarriersCommon.MOD_ID));
 
-    private static KeyMapping keyBindingVisibility;
     private static KeyMapping keyBindingBarriers;
     private static KeyMapping keyBindingLights;
     private static KeyMapping keyBindingStructureVoids;
@@ -26,11 +24,6 @@ public class VisibleInput {
     private static KeyMapping keyBindingZoom;
 
     public static void initKeys() {
-        keyBindingVisibility = KeyMappingHelper.registerKeyMapping(new KeyMapping(
-                "key.visiblebarriers.visible",
-                GLFW.GLFW_KEY_B,
-                CATEGORY
-        ));
         keyBindingBarriers = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.visiblebarriers.barriers",
                 InputConstants.UNKNOWN.getValue(),
@@ -68,22 +61,6 @@ public class VisibleInput {
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(_ -> {
-            if (keyBindingVisibility.consumeClick()) {
-                VisibleBarriers.toggleVisible();
-                //if vis is determined to be false/off and barriers are still true/on, turn the barriers off again
-                if (!VisibleBarriers.isVisibilityEnabled() && VisibleBarriers.areBarriersEnabled()) {
-                    VisibleBarriers.toggleBarriers(); //toggle barriers back off again
-                }
-
-                //if vis is true make sure to double check that config has barriers as true
-                if (VisibleBarriers.isVisibilityEnabled()) {
-                    VisibleConfig.setVisibleBarrier(true);
-                }
-                //if vis is false make sure to double check that config has barriers as false
-                if (!VisibleBarriers.isVisibilityEnabled()) {
-                    VisibleConfig.setVisibleBarrier(false);
-                }
-            }
             if (keyBindingBarriers.consumeClick()) {
                 VisibleBarriers.toggleBarriers();
             }
@@ -126,18 +103,8 @@ public class VisibleInput {
                             VisibleBarriers.sendFeedback("visiblebarriers.command.reload");
                             return 1;
                         }))
-                        //Visibility
+                        //Visibility settings
                         .then(ClientCommands.literal("visibility")
-                                //Universal Visibility
-                                .then(ClientCommands.literal("everything").executes(_ -> {
-                                    VisibleBarriers.toggleVisible();
-                                    return 1;
-                                }).then(ClientCommands.argument("visible", BoolArgumentType.bool()).executes(context -> {
-                                    VisibleBarriers.toggleVisible = BoolArgumentType.getBool(context, "visible");
-                                    VisibleBarriers.reloadWorldRenderer();
-                                    VisibleBarriers.booleanFeedback("visiblebarriers.feedback.visibility", VisibleBarriers.toggleVisible);
-                                    return 1;
-                                })))
                                 //Barriers
                                 .then(ClientCommands.literal("barriers").executes(_ -> {
                                     VisibleConfig.setVisibleBarrier(!VisibleConfig.isBarrierVisible());

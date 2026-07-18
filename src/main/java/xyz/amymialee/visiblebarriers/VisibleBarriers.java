@@ -16,7 +16,6 @@ import xyz.amymialee.visiblebarriers.model.TransparentBlockStateModel;
 
 @Environment(EnvType.CLIENT)
 public class VisibleBarriers implements ClientModInitializer {
-    protected static boolean toggleVisible = false;
     protected static boolean toggleBarriers = false;
     protected static boolean toggleLights = false;
     protected static boolean toggleStructureVoids = false;
@@ -50,21 +49,14 @@ public class VisibleBarriers implements ClientModInitializer {
     }
 
     public static void reloadWorldRenderer() {
-        Minecraft.getInstance().levelExtractor.allChanged();
+        var minecraft = Minecraft.getInstance();
+        if (minecraft.levelExtractor != null) {
+            minecraft.levelExtractor.allChanged();
+        }
     }
 
     public static boolean isVisibilityEnabled() {
-        return toggleVisible;
-    }
-
-    public static void toggleVisible() {
-        setVisible(!toggleVisible);
-    }
-
-    public static void setVisible(boolean visible) {
-        toggleVisible = visible;
-        booleanFeedback("visiblebarriers.feedback.visible", toggleVisible);
-        reloadWorldRenderer();
+        return true;
     }
 
     public static boolean isFullBrightEnabled() {
