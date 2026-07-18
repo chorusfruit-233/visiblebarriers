@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
@@ -46,7 +47,8 @@ public class EntityRendererMixin<T extends Entity, S extends EntityRenderState> 
     protected void visibleBarriers$renderHead(S renderState, PoseStack matrices, SubmitNodeCollector queue, CameraRenderState cameraState, CallbackInfo ci) {
         if (VisibleBarriers.isVisibilityEnabled() && renderState.isInvisible) {
             var entity = ((EntityRenderStateAccess) renderState).visiblebarriers$getEntity();
-            if (entity == null) return; // This happens if a mod creates a render state without extracting it from an entity.
+            // Living entities have their own renderers; adding a fallback item here creates a phantom block above them.
+            if (entity == null || entity instanceof LivingEntity) return;
 
             if (entity.getPickResult() != null) {
                 var stack = entity.getPickResult();
