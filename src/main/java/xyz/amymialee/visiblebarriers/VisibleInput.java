@@ -1,96 +1,12 @@
 package xyz.amymialee.visiblebarriers;
 
-import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommands;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
-import net.minecraft.client.KeyMapping;
 import net.minecraft.commands.arguments.TimeArgument;
-import xyz.amymialee.visiblebarriers.common.VisibleBarriersCommon;
 
 public class VisibleInput {
-
-    private static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(VisibleBarriersCommon.id(VisibleBarriersCommon.MOD_ID));
-
-    private static KeyMapping keyBindingBarriers;
-    private static KeyMapping keyBindingLights;
-    private static KeyMapping keyBindingStructureVoids;
-    private static KeyMapping keyBindingBubbleColumns;
-    private static KeyMapping keyBindingFullBright;
-    private static KeyMapping keyBindingTime;
-    private static KeyMapping keyBindingZoom;
-
-    public static void initKeys() {
-        keyBindingBarriers = KeyMappingHelper.registerKeyMapping(new KeyMapping(
-                "key.visiblebarriers.barriers",
-                InputConstants.UNKNOWN.getValue(),
-                CATEGORY
-        ));
-        keyBindingLights = KeyMappingHelper.registerKeyMapping(new KeyMapping(
-                "key.visiblebarriers.lights",
-                InputConstants.UNKNOWN.getValue(),
-                CATEGORY
-        ));
-        keyBindingStructureVoids = KeyMappingHelper.registerKeyMapping(new KeyMapping(
-                "key.visiblebarriers.structurevoids",
-                InputConstants.UNKNOWN.getValue(),
-                CATEGORY
-        ));
-        keyBindingBubbleColumns = KeyMappingHelper.registerKeyMapping(new KeyMapping(
-                "key.visiblebarriers.bubblecolumns",
-                InputConstants.UNKNOWN.getValue(),
-                CATEGORY
-        ));
-        keyBindingFullBright = KeyMappingHelper.registerKeyMapping(new KeyMapping(
-                "key.visiblebarriers.fullbright",
-                InputConstants.KEY_M,
-                CATEGORY
-        ));
-        keyBindingTime = KeyMappingHelper.registerKeyMapping(new KeyMapping(
-                "key.visiblebarriers.time",
-                InputConstants.UNKNOWN.getValue(),
-                CATEGORY
-        ));
-        keyBindingZoom = KeyMappingHelper.registerKeyMapping(new KeyMapping(
-                "key.visiblebarriers.zoom",
-                InputConstants.KEY_Z,
-                CATEGORY
-        ));
-
-        ClientTickEvents.END_CLIENT_TICK.register(_ -> {
-            if (keyBindingBarriers.consumeClick()) {
-                VisibleBarriers.toggleBarriers();
-            }
-            if (keyBindingLights.consumeClick()) {
-                VisibleBarriers.toggleLights();
-            }
-            if (keyBindingStructureVoids.consumeClick()) {
-                VisibleBarriers.toggleStructureVoids();
-            }
-            if (keyBindingBubbleColumns.consumeClick()) {
-                VisibleBarriers.toggleBubbleColumns();
-            }
-            if (keyBindingFullBright.consumeClick()) {
-                VisibleBarriers.toggleFullBright();
-            }
-            if (keyBindingTime.consumeClick()) {
-                VisibleBarriers.toggleTime();
-            }
-            if (keyBindingZoom.isDown()) {
-                VisibleBarriers.holdingZoom = true;
-                VisibleBarriers.sendFeedback("visiblebarriers.feedback.zoom", "%.0f".formatted(10000f / (VisibleBarriers.getZoomModifier() * 100)));
-            } else {
-                if (VisibleBarriers.holdingZoom) {
-                    VisibleBarriers.holdingZoom = false;
-                    VisibleBarriers.sendFeedback("visiblebarriers.feedback.zoom", "100");
-                }
-                VisibleBarriers.zoomScroll = VisibleConfig.getBaseZoom();
-            }
-        });
-    }
 
     public static void initCommands() {
         ClientCommandRegistrationCallback.EVENT.register((commandDispatcher, _) -> commandDispatcher.register(
@@ -156,6 +72,14 @@ public class VisibleInput {
                             VisibleBarriers.toggleFullBright = BoolArgumentType.getBool(context, "visible");
                             VisibleBarriers.reloadWorldRenderer();
                             VisibleBarriers.booleanFeedback("visiblebarriers.feedback.fullbright", VisibleBarriers.toggleFullBright);
+                            return 1;
+                        })))
+                        //Zoom
+                        .then(ClientCommands.literal("zoom").executes(_ -> {
+                            VisibleBarriers.setZoomEnabled(!VisibleBarriers.isHoldingZoom());
+                            return 1;
+                        }).then(ClientCommands.argument("enabled", BoolArgumentType.bool()).executes(context -> {
+                            VisibleBarriers.setZoomEnabled(BoolArgumentType.getBool(context, "enabled"));
                             return 1;
                         })))
                         //Set Time

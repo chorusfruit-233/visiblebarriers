@@ -1,12 +1,4 @@
 {
-  "key.category.visiblebarriers.visiblebarriers": "Visible Barriers 可見屏障",
-  "key.visiblebarriers.barriers": "顯示屏障",
-  "key.visiblebarriers.lights": "顯示光源",
-  "key.visiblebarriers.structurevoids": "顯示結構空位",
-  "key.visiblebarriers.bubblecolumns": "顯示氣泡柱",
-  "key.visiblebarriers.fullbright": "切換全亮",
-  "key.visiblebarriers.time": "切換強制時間",
-  "key.visiblebarriers.zoom": "縮放",
   "visiblebarriers.enabled": "已啟用",
   "visiblebarriers.disabled": "已停用",
   "visiblebarriers.weather.default": "預設",

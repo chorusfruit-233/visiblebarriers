@@ -1,12 +1,4 @@
 {
-  "key.category.visiblebarriers.visiblebarriers": "Visible Barriers",
-  "key.visiblebarriers.barriers": "Zeige Barrieren",
-  "key.visiblebarriers.lights": "Zeige Lichter",
-  "key.visiblebarriers.structurevoids": "Zeige Konstruktionsleere",
-  "key.visiblebarriers.bubblecolumns": "Zeige Blasensäulen",
-  "key.visiblebarriers.fullbright": "Maximale Helligkeit an/aus schalten",
-  "key.visiblebarriers.time": "Erzwungene Zeit umschalten",
-  "key.visiblebarriers.zoom": "Zoom",
   "visiblebarriers.enabled": "Aktiviert",
   "visiblebarriers.disabled": "Deaktiviert",
   "visiblebarriers.weather.default": "Standard",

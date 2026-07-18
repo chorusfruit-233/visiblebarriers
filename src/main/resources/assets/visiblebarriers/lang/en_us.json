@@ -1,12 +1,4 @@
 {
-  "key.category.visiblebarriers.visiblebarriers": "Visible Barriers",
-  "key.visiblebarriers.barriers": "Show Barriers",
-  "key.visiblebarriers.lights": "Show Lights",
-  "key.visiblebarriers.structurevoids": "Show Structure Voids",
-  "key.visiblebarriers.bubblecolumns": "Show Bubble Columns",
-  "key.visiblebarriers.fullbright": "Toggle Fullbright",
-  "key.visiblebarriers.time": "Toggle Forced Time",
-  "key.visiblebarriers.zoom": "Zoom",
   "visiblebarriers.enabled": "Enabled",
   "visiblebarriers.disabled": "Disabled",
   "visiblebarriers.weather.default": "Default",

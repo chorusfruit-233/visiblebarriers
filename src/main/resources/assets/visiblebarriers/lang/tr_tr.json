@@ -1,12 +1,4 @@
 {
-  "key.category.visiblebarriers.visiblebarriers": "Görünür Bariyerler",
-  "key.visiblebarriers.barriers": "Bariyerleri Göster",
-  "key.visiblebarriers.lights": "Işıkları Göster",
-  "key.visiblebarriers.structurevoids": "Yapı Boşluklarını Göster",
-  "key.visiblebarriers.bubblecolumns": "Baloncuk Sütunlarını Göster",
-  "key.visiblebarriers.fullbright": "Tam parlaklığı Aç/Kapat",
-  "key.visiblebarriers.time": "Sabit Zamanı Aç/Kapat",
-  "key.visiblebarriers.zoom": "Yakınlaştır",
   "visiblebarriers.enabled": "Aktif",
   "visiblebarriers.disabled": "Devre dışı",
   "visiblebarriers.weather.default": "Varsayılan",

@@ -28,7 +28,6 @@ public class VisibleBarriers implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        VisibleInput.initKeys();
         VisibleInput.initCommands();
         VisibleConfig.loadConfig();
         ClientConfigurationNetworking.registerGlobalReceiver(VisibleBarriersNetworking.ModInstalledPayload.TYPE, (_, _) -> {});
@@ -152,6 +151,16 @@ public class VisibleBarriers implements ClientModInitializer {
 
     public static boolean isHoldingZoom() {
         return holdingZoom;
+    }
+
+    public static void setZoomEnabled(boolean enabled) {
+        holdingZoom = enabled;
+        if (!enabled) {
+            zoomScroll = VisibleConfig.getBaseZoom();
+            sendFeedback("visiblebarriers.feedback.zoom", "100");
+            return;
+        }
+        sendFeedback("visiblebarriers.feedback.zoom", "%.0f".formatted(10000f / (getZoomModifier() * 100)));
     }
 
     public static float getZoomModifier() {
