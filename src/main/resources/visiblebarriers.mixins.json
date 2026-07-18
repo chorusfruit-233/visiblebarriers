@@ -17,6 +17,7 @@
         "client.AbstractBlockStateMixin",
         "client.ClientBarrierBlockMixin",
         "client.ClientBubbleColumnBlockMixin",
+        "client.ClientLevelMixin",
         "client.ClientMovingPistonBlockMixin",
         "client.ClientMultiPlayerGameModeMixin",
         "client.ClientWallBlockMixin",

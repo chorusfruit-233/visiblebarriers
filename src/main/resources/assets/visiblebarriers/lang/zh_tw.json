@@ -8,5 +8,8 @@
   "visiblebarriers.config.rendermovingpistons": "渲染移動中的活塞",
   "visiblebarriers.config.rendercaveair": "渲染洞穴空氣",
   "visiblebarriers.config.rendervoidair": "渲染虛空空氣",
-  "visiblebarriers.config.renderinvisiblewalls": "渲染不可見牆體"
+  "visiblebarriers.config.renderinvisiblewalls": "渲染無連接牆體",
+  "visiblebarriers.config.renderinvisiblewalls.tooltip": "顯示四周均無連接且沒有中柱、原版模型會完全消失的普通牆方塊",
+  "visiblebarriers.config.solidlights": "實體光源方塊",
+  "visiblebarriers.config.hideparticles": "隱藏環境粒子"
 }

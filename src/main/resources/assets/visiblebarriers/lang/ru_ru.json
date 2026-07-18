@@ -8,5 +8,8 @@
   "visiblebarriers.config.rendermovingpistons": "Отображать движущиеся поршни",
   "visiblebarriers.config.rendercaveair": "Отображать пещерный воздух",
   "visiblebarriers.config.rendervoidair": "Отображать пустотный воздух",
-  "visiblebarriers.config.renderinvisiblewalls": "Отображать невидимые стены"
+  "visiblebarriers.config.renderinvisiblewalls": "Отображать несоединённые стены",
+  "visiblebarriers.config.renderinvisiblewalls.tooltip": "Показывает обычные стеновые блоки без соединений и центральной стойки, модель которых в ванильной игре полностью исчезает",
+  "visiblebarriers.config.solidlights": "Твёрдые световые блоки",
+  "visiblebarriers.config.hideparticles": "Скрывать окружающие частицы"
 }

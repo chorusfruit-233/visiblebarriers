@@ -8,5 +8,8 @@
   "visiblebarriers.config.rendermovingpistons": "Render Moving Pistons",
   "visiblebarriers.config.rendercaveair": "Render Cave Air",
   "visiblebarriers.config.rendervoidair": "Render Void Air",
-  "visiblebarriers.config.renderinvisiblewalls": "Render Invisible Walls"
+  "visiblebarriers.config.renderinvisiblewalls": "Render Unconnected Walls",
+  "visiblebarriers.config.renderinvisiblewalls.tooltip": "Shows ordinary wall blocks with no connections or center post, whose vanilla model would otherwise disappear completely",
+  "visiblebarriers.config.solidlights": "Solid Light Blocks",
+  "visiblebarriers.config.hideparticles": "Hide Ambient Particles"
 }

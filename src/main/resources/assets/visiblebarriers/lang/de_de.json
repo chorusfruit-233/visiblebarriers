@@ -8,5 +8,8 @@
   "visiblebarriers.config.rendermovingpistons": "Bewegte Kolben darstellen",
   "visiblebarriers.config.rendercaveair": "Höhlenluft darstellen",
   "visiblebarriers.config.rendervoidair": "Leerenluft darstellen",
-  "visiblebarriers.config.renderinvisiblewalls": "Unsichtbare Mauern darstellen"
+  "visiblebarriers.config.renderinvisiblewalls": "Unverbundene Mauern darstellen",
+  "visiblebarriers.config.renderinvisiblewalls.tooltip": "Zeigt gewöhnliche Mauerblöcke ohne Verbindungen oder Mittelpfosten, deren Vanilla-Modell sonst vollständig verschwindet",
+  "visiblebarriers.config.solidlights": "Solide Lichtblöcke",
+  "visiblebarriers.config.hideparticles": "Umgebungspartikel ausblenden"
 }

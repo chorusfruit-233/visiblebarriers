@@ -21,6 +21,8 @@ public class VisibleConfig {
     private static boolean renderCaveAir = false;
     private static boolean renderVoidAir = false;
     private static boolean renderInvisibleWalls = true;
+    private static boolean hideParticles = true;
+    private static boolean solidLights = false;
 
     public static boolean shouldRenderBarriers() {
         return renderBarriers;
@@ -86,6 +88,22 @@ public class VisibleConfig {
         VisibleConfig.renderInvisibleWalls = renderInvisibleWalls;
     }
 
+    public static boolean shouldHideParticles() {
+        return hideParticles;
+    }
+
+    public static void setHideParticles(boolean hideParticles) {
+        VisibleConfig.hideParticles = hideParticles;
+    }
+
+    public static boolean areLightsSolid() {
+        return solidLights;
+    }
+
+    public static void setSolidLights(boolean solidLights) {
+        VisibleConfig.solidLights = solidLights;
+    }
+
     protected static void saveConfig() {
         try {
             var gson = new GsonBuilder().setPrettyPrinting().create();
@@ -98,6 +116,8 @@ public class VisibleConfig {
             json.addProperty("renderCaveAir", renderCaveAir);
             json.addProperty("renderVoidAir", renderVoidAir);
             json.addProperty("renderInvisibleWalls", renderInvisibleWalls);
+            json.addProperty("hideParticles", hideParticles);
+            json.addProperty("solidLights", solidLights);
             Files.writeString(configFile, gson.toJson(json));
         } catch (Exception e) {
             VisibleBarriersCommon.LOGGER.info(e.toString());
@@ -115,6 +135,8 @@ public class VisibleConfig {
             if (data.has("renderCaveAir")) renderCaveAir = data.get("renderCaveAir").getAsBoolean();
             if (data.has("renderVoidAir")) renderVoidAir = data.get("renderVoidAir").getAsBoolean();
             if (data.has("renderInvisibleWalls")) renderInvisibleWalls = data.get("renderInvisibleWalls").getAsBoolean();
+            if (data.has("hideParticles")) hideParticles = data.get("hideParticles").getAsBoolean();
+            if (data.has("solidLights")) solidLights = data.get("solidLights").getAsBoolean();
         } catch (NoSuchFileException e) {
             VisibleBarriersCommon.LOGGER.info("Config data not found.");
         } catch (Exception e) {
