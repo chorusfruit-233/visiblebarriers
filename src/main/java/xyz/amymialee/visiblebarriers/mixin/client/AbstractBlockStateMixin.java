@@ -24,7 +24,10 @@ public abstract class AbstractBlockStateMixin {
     @Inject(method = "getRenderShape", at = @At("RETURN"), cancellable = true)
     private void visibleBarriers$invisibleModels(CallbackInfoReturnable<RenderShape> cir) {
         if (VisibleBarriers.isVisibilityEnabled()) {
-            if (cir.getReturnValue() == RenderShape.INVISIBLE && (VisibleConfig.isAirVisible() || !this.isAir())) {
+            // Light blocks are used for server-side illumination and must remain hidden unless explicitly enabled.
+            if (this.getBlock() == Blocks.LIGHT) {
+                if (VisibleBarriers.areLightsEnabled()) cir.setReturnValue(RenderShape.MODEL);
+            } else if (cir.getReturnValue() == RenderShape.INVISIBLE && (VisibleConfig.isAirVisible() || !this.isAir())) {
                 if (this.getBlock() != Blocks.AIR) cir.setReturnValue(RenderShape.MODEL);
             }
         } else {
