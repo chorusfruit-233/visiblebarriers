@@ -23,7 +23,7 @@ import xyz.amymialee.visiblebarriers.mixin.boxing.BlockMixin;
 public abstract class LightBlockMixin extends BlockMixin {
     @WrapOperation(method = "getShape", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/shapes/CollisionContext;isHoldingItem(Lnet/minecraft/world/item/Item;)Z"))
     public boolean visibleBarriers$visibleOutlineShape(CollisionContext context, Item item, Operation<Boolean> original) {
-        if (VisibleBarriers.areLightsEnabled() || context == CollisionContext.empty()) {
+        if (VisibleBarriers.isVisibilityEnabled() || VisibleBarriers.areLightsEnabled() || context == CollisionContext.empty()) {
             return true;
         }
         return original.call(context, item);
@@ -41,7 +41,7 @@ public abstract class LightBlockMixin extends BlockMixin {
 
     @Override
     public void visibleBarriers$isSideInvisible(BlockState state, BlockState stateFrom, Direction direction, CallbackInfoReturnable<Boolean> cir) {
-        if (VisibleBarriers.areLightsEnabled()) {
+        if (VisibleBarriers.isVisibilityEnabled() || VisibleBarriers.areLightsEnabled()) {
             cir.setReturnValue(stateFrom.isSolidRender() || stateFrom.getBlock() == state.getBlock());
         }
     }
