@@ -17,32 +17,55 @@ public class VisibleConfig {
     private static boolean hideParticles = true;
     private static boolean sendFeedback = true;
     private static boolean solidLights = false;
+    private static boolean fullBright = false;
+    private static boolean forcedTimeEnabled = false;
+    private static boolean zoomEnabled = false;
     private static float baseZoom = 2.8f;
     private static long forcedTime = 6000;
+    private static VisibleBarriers.Weather weather = VisibleBarriers.Weather.DEFAULT;
 
     public static void setVisibleBarrier(boolean visibleBarrier) {
         VisibleConfig.visibleBarrier = visibleBarrier;
-        saveConfig();
     }
 
     public static void setVisibleAir(boolean visibleAir) {
         VisibleConfig.visibleAir = visibleAir;
-        saveConfig();
     }
 
     public static void setHideParticles(boolean hideParticles) {
         VisibleConfig.hideParticles = hideParticles;
-        saveConfig();
     }
 
     public static void setSendFeedback(boolean sendFeedback) {
         VisibleConfig.sendFeedback = sendFeedback;
-        saveConfig();
+    }
+
+    public static void setSolidLights(boolean solidLights) {
+        VisibleConfig.solidLights = solidLights;
+    }
+
+    public static void setFullBright(boolean fullBright) {
+        VisibleConfig.fullBright = fullBright;
+    }
+
+    public static void setForcedTimeEnabled(boolean forcedTimeEnabled) {
+        VisibleConfig.forcedTimeEnabled = forcedTimeEnabled;
+    }
+
+    public static void setZoomEnabled(boolean zoomEnabled) {
+        VisibleConfig.zoomEnabled = zoomEnabled;
+    }
+
+    public static void setBaseZoom(float baseZoom) {
+        VisibleConfig.baseZoom = baseZoom;
     }
 
     public static void setForcedTime(long forcedTime) {
         VisibleConfig.forcedTime = forcedTime;
-        VisibleBarriers.setTime(true);
+    }
+
+    public static void setWeather(VisibleBarriers.Weather weather) {
+        VisibleConfig.weather = weather;
     }
 
     public static boolean isBarrierVisible() {
@@ -73,6 +96,22 @@ public class VisibleConfig {
         return solidLights;
     }
 
+    public static boolean isFullBrightEnabled() {
+        return fullBright;
+    }
+
+    public static boolean isForcedTimeEnabled() {
+        return forcedTimeEnabled;
+    }
+
+    public static boolean isZoomEnabled() {
+        return zoomEnabled;
+    }
+
+    public static VisibleBarriers.Weather getWeather() {
+        return weather;
+    }
+
     protected static void saveConfig() {
         try {
             var gson = new GsonBuilder().setPrettyPrinting().create();
@@ -82,7 +121,12 @@ public class VisibleConfig {
             json.addProperty("hideParticles", hideParticles);
             json.addProperty("sendFeedback", sendFeedback);
             json.addProperty("baseZoom", baseZoom);
-            if (solidLights) json.addProperty("solidLights", true);
+            json.addProperty("solidLights", solidLights);
+            json.addProperty("fullBright", fullBright);
+            json.addProperty("forcedTimeEnabled", forcedTimeEnabled);
+            json.addProperty("forcedTime", forcedTime);
+            json.addProperty("weather", weather.name());
+            json.addProperty("zoomEnabled", zoomEnabled);
             var jsonData = gson.toJson(json);
             Files.writeString(configFile, jsonData);
         } catch (Exception e) {
@@ -115,11 +159,40 @@ public class VisibleConfig {
             if (data.has("solidLights")) {
                 solidLights = data.get("solidLights").getAsBoolean();
             }
+            if (data.has("fullBright")) {
+                fullBright = data.get("fullBright").getAsBoolean();
+            }
+            if (data.has("forcedTimeEnabled")) {
+                forcedTimeEnabled = data.get("forcedTimeEnabled").getAsBoolean();
+            }
+            if (data.has("forcedTime")) {
+                forcedTime = data.get("forcedTime").getAsLong();
+            }
+            if (data.has("weather")) {
+                try {
+                    weather = VisibleBarriers.Weather.valueOf(data.get("weather").getAsString());
+                } catch (IllegalArgumentException ignored) {
+                    weather = VisibleBarriers.Weather.DEFAULT;
+                }
+            }
+            if (data.has("zoomEnabled")) {
+                zoomEnabled = data.get("zoomEnabled").getAsBoolean();
+            }
         } catch (NoSuchFileException e) {
             VisibleBarriersCommon.LOGGER.info("Config data not found.");
         } catch (Exception e) {
             VisibleBarriersCommon.LOGGER.info("Error loading config data.");
             VisibleBarriersCommon.LOGGER.info(e.toString());
         }
+        applyRuntimeState();
+    }
+
+    protected static void applyRuntimeState() {
+        VisibleBarriers.toggleBarriers = visibleBarrier;
+        VisibleBarriers.toggleFullBright = fullBright;
+        VisibleBarriers.toggleTime = forcedTimeEnabled;
+        VisibleBarriers.holdingZoom = zoomEnabled;
+        VisibleBarriers.setWeather = weather;
+        VisibleBarriers.zoomScroll = baseZoom;
     }
 }

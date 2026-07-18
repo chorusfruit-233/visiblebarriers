@@ -1,0 +1,21 @@
+{
+  "visiblebarriers.config.title": "可见屏障",
+  "visiblebarriers.config.category.rendering": "渲染",
+  "visiblebarriers.config.category.client": "客户端效果",
+  "visiblebarriers.config.visibleair": "显示空气",
+  "visiblebarriers.config.solidlights": "实体光源方块",
+  "visiblebarriers.config.hideparticles": "隐藏环境粒子",
+  "visiblebarriers.config.fullbright": "全亮",
+  "visiblebarriers.config.forcedtime": "强制客户端时间",
+  "visiblebarriers.config.time": "强制时间",
+  "visiblebarriers.config.weather": "客户端天气",
+  "visiblebarriers.config.zoom": "启用缩放",
+  "visiblebarriers.config.basezoom": "缩放强度",
+  "visiblebarriers.config.sendfeedback": "发送反馈",
+  "visiblebarriers.weather.default": "默认",
+  "visiblebarriers.weather.clear": "晴朗",
+  "visiblebarriers.weather.rain": "下雨",
+  "visiblebarriers.weather.thunder": "雷暴",
+  "visiblebarriers.feedback.weather": "天气：%s",
+  "visiblebarriers.feedback.zoom": "缩放：%s %%"
+}

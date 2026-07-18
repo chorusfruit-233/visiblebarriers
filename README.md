@@ -7,7 +7,7 @@
   <div>Visible Barriers is a useful mod for mapmakers and map playtesters.</div>
   <div>It adds multiple tools for mapmaking and testing, including always-visible barrier blocks rendered as solid blocks.</div>
   <div>It also allows you to see marker entities (when installed on the server).</div>
-  <div>It also has several other features, such as command-controlled zoom, fullbright, and the ability to set the time of day client side!</div>
+  <div>It also has several other features configured through Cloth Config, such as zoom, fullbright, and client-side time controls!</div>
 </div>
 
 

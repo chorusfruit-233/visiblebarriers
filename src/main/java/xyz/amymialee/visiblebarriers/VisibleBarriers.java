@@ -28,7 +28,6 @@ public class VisibleBarriers implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        VisibleInput.initCommands();
         VisibleConfig.loadConfig();
         ClientConfigurationNetworking.registerGlobalReceiver(VisibleBarriersNetworking.ModInstalledPayload.TYPE, (_, _) -> {});
         CustomUnbakedBlockStateModel.register(VisibleBarriersCommon.id("transparent"), TransparentBlockStateModel.Unbaked.CODEC);
@@ -146,7 +145,7 @@ public class VisibleBarriers implements ClientModInitializer {
 
     public static void setWeather(Weather weather) {
         setWeather = weather;
-        sendFeedback("visiblebarriers.command.weather", Component.translatable(setWeather.getTranslationKey()));
+        sendFeedback("visiblebarriers.feedback.weather", Component.translatable(setWeather.getTranslationKey()));
     }
 
     public static boolean isHoldingZoom() {

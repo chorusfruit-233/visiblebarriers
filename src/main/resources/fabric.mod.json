@@ -26,13 +26,18 @@
     ],
     "client": [
       "xyz.amymialee.visiblebarriers.VisibleBarriers"
+    ],
+    "modmenu": [
+      "xyz.amymialee.visiblebarriers.VisibleModMenu"
     ]
   },
   "mixins": [
     "visiblebarriers.mixins.json"
   ],
   "depends": {
-    "fabric-api": "*"
+    "fabric-api": "*",
+    "cloth-config": "*",
+    "modmenu": "*"
   },
   "custom": {
     "modmenu": {
