@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import xyz.amymialee.visiblebarriers.VisibleBarriers;
+import xyz.amymialee.visiblebarriers.VisibleConfig;
 import xyz.amymialee.visiblebarriers.common.VisibleBarriersCommon;
 import xyz.amymialee.visiblebarriers.mixin.boxing.BlockMixin;
 
@@ -19,7 +19,7 @@ import xyz.amymialee.visiblebarriers.mixin.boxing.BlockMixin;
 public abstract class ClientMovingPistonBlockMixin extends BlockMixin {
     @Inject(method = "getShape", at = @At("HEAD"), cancellable = true)
     public void visibleBarriers$makeOutlineVisible(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context, CallbackInfoReturnable<VoxelShape> cir) {
-        if (VisibleBarriers.isVisibilityEnabled() || context.isHoldingItem(VisibleBarriersCommon.MOVING_PISTON_BLOCK_ITEM)) {
+        if (VisibleConfig.shouldRenderMovingPistons() || context.isHoldingItem(VisibleBarriersCommon.MOVING_PISTON_BLOCK_ITEM)) {
             cir.setReturnValue(Shapes.block());
         }
     }

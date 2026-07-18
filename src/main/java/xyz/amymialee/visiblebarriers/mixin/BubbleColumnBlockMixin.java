@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import xyz.amymialee.visiblebarriers.VisibleBarriers;
+import xyz.amymialee.visiblebarriers.VisibleConfig;
 import xyz.amymialee.visiblebarriers.common.VisibleBarriersCommon;
 import xyz.amymialee.visiblebarriers.mixin.boxing.BlockMixin;
 
@@ -50,7 +50,7 @@ public abstract class BubbleColumnBlockMixin extends BlockMixin implements Playe
     @Environment(EnvType.CLIENT)
     @Inject(method = "getShape", at = @At("HEAD"), cancellable = true)
     public void visibleBarriers$visibleOutlineShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context, CallbackInfoReturnable<VoxelShape> cir) {
-        if (VisibleBarriers.isVisibilityEnabled() || VisibleBarriers.areBubbleColumnsEnabled() || context == CollisionContext.empty()) {
+        if (VisibleConfig.shouldRenderBubbleColumns() || context == CollisionContext.empty()) {
             cir.setReturnValue(Shapes.block());
         }
     }

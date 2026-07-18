@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import xyz.amymialee.visiblebarriers.VisibleBarriers;
+import xyz.amymialee.visiblebarriers.VisibleConfig;
 import xyz.amymialee.visiblebarriers.mixin.boxing.BlockMixin;
 
 import java.util.function.Function;
@@ -26,7 +26,7 @@ public abstract class ClientWallBlockMixin extends BlockMixin {
 
     @Inject(method = "getShape", at = @At("HEAD"), cancellable = true)
     public void visibleBarriers$makeOutlineVisible(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context, CallbackInfoReturnable<VoxelShape> cir) {
-        if (VisibleBarriers.isVisibilityEnabled()) {
+        if (VisibleConfig.shouldRenderInvisibleWalls()) {
             var east = state.getValueOrElse(WallBlock.EAST, WallSide.LOW) == WallSide.NONE;
             var west = state.getValueOrElse(WallBlock.WEST, WallSide.LOW) == WallSide.NONE;
             var north = state.getValueOrElse(WallBlock.NORTH, WallSide.LOW) == WallSide.NONE;

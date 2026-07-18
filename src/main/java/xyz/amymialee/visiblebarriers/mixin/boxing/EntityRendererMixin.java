@@ -16,7 +16,6 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import xyz.amymialee.visiblebarriers.VisibleBarriers;
 import xyz.amymialee.visiblebarriers.access.EntityRenderStateAccess;
 import xyz.amymialee.visiblebarriers.util.FloatyRenderer;
 
@@ -44,7 +43,7 @@ public class EntityRendererMixin<T extends Entity, S extends EntityRenderState> 
 
     @Inject(method = "submit", at = @At("HEAD"))
     protected void visibleBarriers$renderHead(S renderState, PoseStack matrices, SubmitNodeCollector queue, CameraRenderState cameraState, CallbackInfo ci) {
-        if (VisibleBarriers.isVisibilityEnabled() && renderState.isInvisible) {
+        if (renderState.isInvisible) {
             var entity = ((EntityRenderStateAccess) renderState).visiblebarriers$getEntity();
             if (entity == null) return; // This happens if a mod creates a render state without extracting it from an entity.
 

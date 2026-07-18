@@ -1,3 +1,12 @@
 {
-  "itemGroup.visiblebarriers.visible_barriers": "Дополнительные предметы"
+  "visiblebarriers.config.title": "Видимые барьеры",
+  "visiblebarriers.config.category.rendering": "Отрисовка",
+  "visiblebarriers.config.renderbarriers": "Отображать барьеры",
+  "visiblebarriers.config.renderlights": "Отображать световые блоки",
+  "visiblebarriers.config.renderstructurevoids": "Отображать пустоты структуры",
+  "visiblebarriers.config.renderbubblecolumns": "Отображать колонны пузырей",
+  "visiblebarriers.config.rendermovingpistons": "Отображать движущиеся поршни",
+  "visiblebarriers.config.rendercaveair": "Отображать пещерный воздух",
+  "visiblebarriers.config.rendervoidair": "Отображать пустотный воздух",
+  "visiblebarriers.config.renderinvisiblewalls": "Отображать невидимые стены"
 }
