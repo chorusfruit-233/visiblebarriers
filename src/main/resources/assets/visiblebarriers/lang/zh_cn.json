@@ -10,6 +10,8 @@
   "visiblebarriers.config.rendervoidair": "渲染虚空空气",
   "visiblebarriers.config.renderinvisiblewalls": "渲染无连接墙体",
   "visiblebarriers.config.renderinvisiblewalls.tooltip": "显示四周均无连接且没有中柱、原版模型会完全消失的普通墙方块",
+  "visiblebarriers.config.renderinvisibleentities": "渲染不可见实体标记",
+  "visiblebarriers.config.renderinvisibleentities.tooltip": "在隐身实体、区域效果云和标记实体的位置显示旋转物品",
   "visiblebarriers.config.solidlights": "实体光源方块",
   "visiblebarriers.config.hideparticles": "隐藏环境粒子"
 }

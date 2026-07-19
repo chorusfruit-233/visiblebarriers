@@ -10,6 +10,8 @@
   "visiblebarriers.config.rendervoidair": "Boşluk havasını göster",
   "visiblebarriers.config.renderinvisiblewalls": "Bağlantısız duvarları göster",
   "visiblebarriers.config.renderinvisiblewalls.tooltip": "Bağlantısı veya orta direği olmayan ve normal modeli tamamen kaybolan sıradan duvar bloklarını gösterir",
+  "visiblebarriers.config.renderinvisibleentities": "Görünmez varlık işaretlerini göster",
+  "visiblebarriers.config.renderinvisibleentities.tooltip": "Görünmez varlıklarda, alan etkisi bulutlarında ve işaretleyici varlıklarda dönen eşyalar gösterir",
   "visiblebarriers.config.solidlights": "Katı ışık blokları",
   "visiblebarriers.config.hideparticles": "Ortam parçacıklarını gizle"
 }

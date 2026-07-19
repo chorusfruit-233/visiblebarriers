@@ -21,6 +21,7 @@ public class VisibleConfig {
     private static boolean renderCaveAir = false;
     private static boolean renderVoidAir = false;
     private static boolean renderInvisibleWalls = true;
+    private static boolean renderInvisibleEntities = true;
     private static boolean hideParticles = true;
     private static boolean solidLights = false;
 
@@ -88,6 +89,14 @@ public class VisibleConfig {
         VisibleConfig.renderInvisibleWalls = renderInvisibleWalls;
     }
 
+    public static boolean shouldRenderInvisibleEntities() {
+        return renderInvisibleEntities;
+    }
+
+    public static void setRenderInvisibleEntities(boolean renderInvisibleEntities) {
+        VisibleConfig.renderInvisibleEntities = renderInvisibleEntities;
+    }
+
     public static boolean shouldHideParticles() {
         return hideParticles;
     }
@@ -116,6 +125,7 @@ public class VisibleConfig {
             json.addProperty("renderCaveAir", renderCaveAir);
             json.addProperty("renderVoidAir", renderVoidAir);
             json.addProperty("renderInvisibleWalls", renderInvisibleWalls);
+            json.addProperty("renderInvisibleEntities", renderInvisibleEntities);
             json.addProperty("hideParticles", hideParticles);
             json.addProperty("solidLights", solidLights);
             Files.writeString(configFile, gson.toJson(json));
@@ -135,6 +145,7 @@ public class VisibleConfig {
             if (data.has("renderCaveAir")) renderCaveAir = data.get("renderCaveAir").getAsBoolean();
             if (data.has("renderVoidAir")) renderVoidAir = data.get("renderVoidAir").getAsBoolean();
             if (data.has("renderInvisibleWalls")) renderInvisibleWalls = data.get("renderInvisibleWalls").getAsBoolean();
+            if (data.has("renderInvisibleEntities")) renderInvisibleEntities = data.get("renderInvisibleEntities").getAsBoolean();
             if (data.has("hideParticles")) hideParticles = data.get("hideParticles").getAsBoolean();
             if (data.has("solidLights")) solidLights = data.get("solidLights").getAsBoolean();
         } catch (NoSuchFileException e) {

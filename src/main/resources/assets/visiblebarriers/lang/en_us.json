@@ -10,6 +10,8 @@
   "visiblebarriers.config.rendervoidair": "Render Void Air",
   "visiblebarriers.config.renderinvisiblewalls": "Render Unconnected Walls",
   "visiblebarriers.config.renderinvisiblewalls.tooltip": "Shows ordinary wall blocks with no connections or center post, whose vanilla model would otherwise disappear completely",
+  "visiblebarriers.config.renderinvisibleentities": "Render Invisible Entity Markers",
+  "visiblebarriers.config.renderinvisibleentities.tooltip": "Shows rotating items at invisible entities, area effect clouds, and marker entities",
   "visiblebarriers.config.solidlights": "Solid Light Blocks",
   "visiblebarriers.config.hideparticles": "Hide Ambient Particles"
 }

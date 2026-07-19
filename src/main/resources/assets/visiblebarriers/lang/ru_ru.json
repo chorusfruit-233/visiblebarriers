@@ -10,6 +10,8 @@
   "visiblebarriers.config.rendervoidair": "Отображать пустотный воздух",
   "visiblebarriers.config.renderinvisiblewalls": "Отображать несоединённые стены",
   "visiblebarriers.config.renderinvisiblewalls.tooltip": "Показывает обычные стеновые блоки без соединений и центральной стойки, модель которых в ванильной игре полностью исчезает",
+  "visiblebarriers.config.renderinvisibleentities": "Отображать маркеры невидимых сущностей",
+  "visiblebarriers.config.renderinvisibleentities.tooltip": "Показывает вращающиеся предметы на невидимых сущностях, облаках эффектов и сущностях-маркерах",
   "visiblebarriers.config.solidlights": "Твёрдые световые блоки",
   "visiblebarriers.config.hideparticles": "Скрывать окружающие частицы"
 }

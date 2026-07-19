@@ -65,6 +65,13 @@ public final class VisibleConfigScreen {
                 .setSaveConsumer(VisibleConfig::setRenderInvisibleWalls)
                 .build());
         rendering.addEntry(entries.startBooleanToggle(
+                        Component.translatable("visiblebarriers.config.renderinvisibleentities"),
+                        VisibleConfig.shouldRenderInvisibleEntities())
+                .setDefaultValue(true)
+                .setTooltip(Component.translatable("visiblebarriers.config.renderinvisibleentities.tooltip"))
+                .setSaveConsumer(VisibleConfig::setRenderInvisibleEntities)
+                .build());
+        rendering.addEntry(entries.startBooleanToggle(
                         Component.translatable("visiblebarriers.config.solidlights"),
                         VisibleConfig.areLightsSolid())
                 .setDefaultValue(false)

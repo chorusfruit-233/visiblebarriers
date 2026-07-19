@@ -3,6 +3,7 @@ package xyz.amymialee.visiblebarriers.mixin.client;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import xyz.amymialee.visiblebarriers.VisibleConfig;
 import xyz.amymialee.visiblebarriers.access.EntityRenderStateAccess;
 import xyz.amymialee.visiblebarriers.mixin.boxing.EntityRendererMixin;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -22,6 +23,8 @@ import net.minecraft.world.item.alchemy.PotionContents;
 public abstract class NoopRendererMixin<T extends Entity, S extends EntityRenderState> extends EntityRendererMixin<T, S> {
     @Override
     protected void visibleBarriers$renderHead(S renderState, PoseStack matrices, SubmitNodeCollector queue, CameraRenderState cameraState, CallbackInfo ci) {
+        if (!VisibleConfig.shouldRenderInvisibleEntities()) return;
+
         var entity = ((EntityRenderStateAccess) renderState).visiblebarriers$getEntity();
         if (entity instanceof AreaEffectCloud cloud) {
             if (!this.floater.getItem().is(Items.LINGERING_POTION)) {

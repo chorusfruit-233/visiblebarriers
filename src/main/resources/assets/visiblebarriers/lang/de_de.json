@@ -10,6 +10,8 @@
   "visiblebarriers.config.rendervoidair": "Leerenluft darstellen",
   "visiblebarriers.config.renderinvisiblewalls": "Unverbundene Mauern darstellen",
   "visiblebarriers.config.renderinvisiblewalls.tooltip": "Zeigt gewöhnliche Mauerblöcke ohne Verbindungen oder Mittelpfosten, deren Vanilla-Modell sonst vollständig verschwindet",
+  "visiblebarriers.config.renderinvisibleentities": "Markierungen unsichtbarer Entitäten darstellen",
+  "visiblebarriers.config.renderinvisibleentities.tooltip": "Zeigt rotierende Gegenstände bei unsichtbaren Entitäten, Flächeneffektwolken und Markierungsentitäten",
   "visiblebarriers.config.solidlights": "Solide Lichtblöcke",
   "visiblebarriers.config.hideparticles": "Umgebungspartikel ausblenden"
 }
